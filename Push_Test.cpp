@@ -3,11 +3,20 @@
 //
 
 #include "Push_Test.h"
-#include <iostream> // Include the iostream library for input and output
+
+#include <fstream>
+#include <iostream>
+#include <string>
 
 int main() {
-    std::cout << "Hello, World!" << std::endl; // Print "Hello, World!" to the console
-    return 0; // Indicate that the program ended successfully
+    std::ifstream file("data.csv");
+    std::string line;
+
+    while (std::getline(file, line)) {
+        std::cout << line << std::endl;
+    }
+
+    return 0;
 }
 
 
