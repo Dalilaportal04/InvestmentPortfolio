@@ -8,6 +8,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 int main() {
     std::ifstream file("data.csv");
     std::string line;
@@ -16,8 +18,9 @@ int main() {
         std::cout << line << std::endl;
     }
 
+    cout << "please work." << endl;
+
     return 0;
 }
 
 
-// ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
