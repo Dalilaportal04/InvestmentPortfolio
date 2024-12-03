@@ -290,7 +290,7 @@ nav{
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Even spacing between items */
+    gap: 1.5rem; 
     flex: 1;
 }
 
@@ -395,13 +395,13 @@ nav{
     border-radius: 2rem;
     background: #fdfaf5;
     margin-bottom: 0.5rem;
-    transition: background 0.3s, color 0.3s; /* Smooth color transition */
-    cursor: pointer; /* Indicates interactivity */
+    transition: background 0.3s, color 0.3s; 
+    cursor: pointer; 
 }
 
 .holder-name:hover {
-    background: steelblue; /* Change background color on hover */
-    color: white; /* Change text color on hover */
+    background: steelblue; 
+    color: white;
 }
 
 .holder-value {
