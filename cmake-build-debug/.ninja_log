@@ -1,3 +1,6 @@
 # ninja log v5
 0	682	7537399194516963	CMakeFiles/InvestmentPortfolio.dir/Push_Test.cpp.obj	b6d6d075cba53264
 685	985	7537399197446393	InvestmentPortfolio.exe	3f6e9d25dc408096
+6	451	7537433495274976	build.ninja	802972734c0768e4
+7	731	7537433504666848	CMakeFiles/InvestmentPortfolio.dir/Push_Test.cpp.obj	b6d6d075cba53264
+732	896	7537433506259071	InvestmentPortfolio.exe	3f6e9d25dc408096
