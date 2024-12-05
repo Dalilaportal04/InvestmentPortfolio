@@ -8,12 +8,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        #btreeVisualization {
+        /* Popup styles */
+        #popup {
             display: none;
-            margin-top: 20px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
             border: 1px solid #ccc;
-            max-width: 100%;
-            height: auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        #popup h2 {
+            margin-top: 0;
+        }
+
+        #popup .close-btn {
+            cursor: pointer;
+            color: red;
+            font-weight: bold;
+        }
+
+        #popup ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #popup ul li {
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        #popup ul li:last-child {
+            border-bottom: none;
         }
     </style>
 </head>
@@ -22,55 +54,48 @@
 <!-- header start -->
 <header>
     <a href="#" class="logo">LED - <span>Investment Portfolio</span></a>
-
     <nav class="navbar">
         <img src="images/lightbulb.webp" class="lightbulb" alt="Part of the logo">
         <img src="images/logo.png" class="logoPic" alt="Company Logo">
     </nav>
-
 </header>
 <!-- header ends -->
 
 <!-- home starts -->
-
 <section class="home" id="home">
-
     <div class="content">
         <h3>WELCOME USER</h3>
         <span>LET’S TAKE A LOOK AT YOUR PORTFOLIO</span>
         <p>Designed to achieve financial goals through diversification and risk management.</p>
         <a href="add_equity.html" class="btn">Add an Equity</a>
-        <a href="#" class="btn2">View / Edit Your Holdings</a>
+        <a href="#" class="btn2" onclick="showHoldings()">View Your Holdings</a>
     </div>
-
 </section>
-
 <!-- home ends -->
 
+<!-- Popup Modal for Holdings -->
+<div id="popup">
+    <span class="close-btn" onclick="closePopup()">X</span>
+    <h2>Your Holdings</h2>
+    <ul id="holdingsList"></ul>
+</div>
+
 <!-- about starts -->
-
 <section class="about" id="about">
-
     <h1 class="heading"> <span> investment </span> portfolio </h1>
-
     <div class="row">
-
         <div class="video-container">
             <video src="images/person-video.mp4" loop autoplay muted></video>
         </div>
-
         <div class="content">
-            <h3>What is an Investment Portoflio?</h3>
+            <h3>What is an Investment Portfolio?</h3>
             <p>An investment portfolio is a collection of financial assets such as stocks, bonds, mutual funds, and other
                 investments owned by an individual or institution. It represents the overall strategy and goals of the investor,
                 balancing risk and reward to grow wealth over time. Portfolios can be diversified across various industries,
                 asset types, and geographic regions to minimize risk and maximize returns, tailored to meet specific financial objectives.</p>
         </div>
-
     </div>
-
 </section>
-
 <!-- about ends -->
 
 <!-- Portfolio starts -->
@@ -108,12 +133,10 @@
         </div>
     </div>
 </div>
-
 <!-- Portfolio ends -->
 
-<!--- Top Performing starts -->
+<!-- Top Performing starts -->
 <section class="performing" id="performing">
-
     <h1 class="heading"> <span>Top Performing Holders in</span> Technology </h1>
     <div class="holders">
         <div class="holders-image">
@@ -146,21 +169,58 @@
                 </div>
             </div>
         </div>
-
-        <div class="see-all-container">
-            <button href="#" class="btn see-all-btn" onclick="showVisualization()">SEE ALL</button>
-        </div>
-
-        <!-- Visualization Container -->
-        <img id="btreeVisualization" src="" alt="BTree Visualization">
-
     </div>
-
 </section>
-
 <!-- Top Performing ends -->
 
 <script>
+    // Function to show the holdings popup
+    async function showHoldings() {
+        try {
+            console.log("showHoldings function triggered.");  // Debugging output
+
+            // Fetch data from the holdings.json file
+            const response = await fetch('../Data/holdings.json');
+
+            // Check if the fetch was successful
+            if (!response.ok) {
+                throw new Error('Failed to load holdings data');
+            }
+
+            // Parse the JSON data
+            const holdingsData = await response.json();
+            console.log("Fetched Holdings Data:", holdingsData);  // Debugging output
+
+            // Sort holdings by delta from greatest to smallest
+            const sortedHoldings = holdingsData.sort((a, b) => b.delta - a.delta);
+
+            // Get the list element in the popup
+            const holdingsList = document.getElementById("holdingsList");
+
+            // Clear any existing list items
+            holdingsList.innerHTML = "";
+
+            // Loop through sorted holdings and append them as list items
+            sortedHoldings.forEach(stock => {
+                const li = document.createElement("li");
+                li.textContent = `${stock.ticker}: ${stock.delta}`;
+                holdingsList.appendChild(li);
+            });
+
+            // Show the popup
+            document.getElementById("popup").style.display = "block";
+        } catch (error) {
+            console.error('Error fetching or processing data:', error);
+        }
+    }
+
+
+    // Function to close the popup
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+
+    // Function to show the BTree visualization
     function showVisualization() {
         const img = document.getElementById("btreeVisualization");
         img.src = "btree.png"; // Adjust the path if necessary based on your server setup

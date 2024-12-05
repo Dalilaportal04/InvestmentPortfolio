@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 
-// Stock class to hold ticker and price
 class Stock {
 public:
     std::string ticker;

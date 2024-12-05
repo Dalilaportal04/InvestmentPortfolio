@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/dalil/CLionProjects/InvestmentPortfolio
+# Install script for directory: C:/Users/likoy/OneDrive - University of Florida/Areas/Academics/COP3530/InvestmentPortfolio
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Program Files/JetBrains/CLion 2023.3.2/bin/mingw/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "C:/mingw/mingw64/bin/objdump.exe")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/dalil/CLionProjects/InvestmentPortfolio/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/likoy/OneDrive - University of Florida/Areas/Academics/COP3530/InvestmentPortfolio/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
