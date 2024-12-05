@@ -7,6 +7,15 @@
     <title>Investment Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        #btreeVisualization {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
 
@@ -139,19 +148,25 @@
         </div>
 
         <div class="see-all-container">
-            <a href="#" class="btn see-all-btn">SEE ALL</a>
+            <button href="#" class="btn see-all-btn" onclick="showVisualization()">SEE ALL</button>
         </div>
+
+        <!-- Visualization Container -->
+        <img id="btreeVisualization" src="" alt="BTree Visualization">
+
     </div>
 
 </section>
 
-
-
-
-
-
 <!-- Top Performing ends -->
 
-    </div>
+<script>
+    function showVisualization() {
+        const img = document.getElementById("btreeVisualization");
+        img.src = "btree.png"; // Adjust the path if necessary based on your server setup
+        img.style.display = "block";
+    }
+</script>
+
 </body>
 </html>

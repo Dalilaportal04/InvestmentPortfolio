@@ -3,8 +3,11 @@ project(InvestmentPortfolio)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(.)
+include_directories("../jsoncpp")
 
 add_executable(InvestmentPortfolio
-        Push_Test.cpp
-        Push_Test.h)
+        newquity.cpp
+        newquity.cpp
+        newquity.cpp
+        main.cpp
+        BTree.cpp)

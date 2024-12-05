@@ -1,6 +1,14 @@
 # ninja log v5
-0	682	7537399194516963	CMakeFiles/InvestmentPortfolio.dir/Push_Test.cpp.obj	b6d6d075cba53264
-685	985	7537399197446393	InvestmentPortfolio.exe	3f6e9d25dc408096
-6	451	7537433495274976	build.ninja	802972734c0768e4
 7	731	7537433504666848	CMakeFiles/InvestmentPortfolio.dir/Push_Test.cpp.obj	b6d6d075cba53264
-732	896	7537433506259071	InvestmentPortfolio.exe	3f6e9d25dc408096
+2	421	7550631263187895	build.ninja	802972734c0768e4
+837	998	7550611447521738	InvestmentPortfolio.exe	f196d0b980ee09f7
+5	836	7550611445971600	CMakeFiles/InvestmentPortfolio.dir/newquity.cpp.obj	14969af3e18dd9db
+12	878	7550631458681729	CMakeFiles/InvestmentPortfolio.dir/newquity.cpp.obj	660722568169902b
+18	1304	7550631462904547	CMakeFiles/InvestmentPortfolio.dir/BTree.cpp.obj	9a33ff8df183fdd2
+4	3962	7550631489414995	CMakeFiles/InvestmentPortfolio.dir/main.cpp.obj	39de5a9ab39c1e10
+4	72	7550643655729551	CMakeFiles/InvestmentPortfolio.dir/newquity.cpp.obj	660722568169902b
+16	762	7550643662599955	CMakeFiles/InvestmentPortfolio.dir/BTree.cpp.obj	9a33ff8df183fdd2
+11	2526	7550643680194454	CMakeFiles/InvestmentPortfolio.dir/main.cpp.obj	39de5a9ab39c1e10
+2526	3392	7550643688860102	InvestmentPortfolio.exe	a5c3fd7d5422f9a4
+4	4532	7550645834446902	CMakeFiles/InvestmentPortfolio.dir/main.cpp.obj	39de5a9ab39c1e10
+4533	5276	7550645841925548	InvestmentPortfolio.exe	a5c3fd7d5422f9a4

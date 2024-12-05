@@ -17,41 +17,68 @@
             <label for="stockPrice">Purchase Price:</label>
             <input type="number" step="0.01" id="stockPrice" name="stockPrice" required>
             <br>
-            <button type="submit" class="btn">Submit</button>
+            <button type="button" id="saveButton" class="btn">Save</button>
+            <button type="button" id="submitButton" class="btn">Submit</button>
         </form>
     </div>
 </section>
 
 <script>
-    document.getElementById('equityForm').addEventListener('submit', async (event) => {
-        event.preventDefault();
+    // Initialize an array to store data temporarily
+    let equities = JSON.parse(localStorage.getItem('equities')) || [];
 
-        const stockName = document.getElementById('stockName').value;
+    // Save Button Logic
+    document.getElementById('saveButton').addEventListener('click', () => {
+        const stockName = document.getElementById('stockName').value.trim();
         const stockPrice = document.getElementById('stockPrice').value;
 
-        try {
-            // Send data to the backend
-            const response = await fetch('http://127.0.0.1:5000/add_equity', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    stockName,
-                    stockPrice,
-                }),
-            });
-
-            if (response.ok) {
-                // Redirect to the main page after successful submission
-                window.location.href = 'index.html';
-            } else {
-                alert('Failed to submit the equity. Please try again.');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again later.');
+        if (!stockName || !stockPrice) {
+            alert("Please fill in both fields!");
+            return;
         }
+
+        // Add the input to the array
+        equities.push({
+            stockName: stockName,
+            stockPrice: parseFloat(stockPrice),
+        });
+
+        // Store the array in localStorage
+        localStorage.setItem('equities', JSON.stringify(equities));
+
+        // Clear the form fields for new input
+        document.getElementById('equityForm').reset();
+        alert("Equity data saved! You can add more entries.");
+    });
+
+    // Submit Button Logic
+    document.getElementById('submitButton').addEventListener('click', () => {
+        if (equities.length === 0) {
+            alert("No data to save! Please add at least one equity.");
+            return;
+        }
+
+        // Create a JSON Blob
+        const dataToSave = JSON.stringify(equities, null, 2);
+        const blob = new Blob([dataToSave], { type: "application/json" });
+
+        // Create a download link
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "newquity.json"; // Save as "newquity.json"
+        link.style.display = "none";
+
+        // Trigger the download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // Clear stored data
+        localStorage.removeItem('equities');
+        equities = [];
+
+        // Redirect to index.html
+        window.location.href = "index.html";
     });
 </script>
 </body>

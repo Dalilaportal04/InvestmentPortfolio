@@ -409,6 +409,25 @@ nav{
     color: #333;
 }
 
+#data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#data-table th, #data-table td {
+    padding: 10px;
+    text-align: left;
+}
+
+#data-table th {
+    background-color: #f4f4f4;
+}
+
+#data-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
 
 /* Changing with Screen Size */
 @media (max-width: 991px) {
